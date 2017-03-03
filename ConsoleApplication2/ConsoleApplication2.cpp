@@ -34,11 +34,11 @@ void checkScale(string scale, string root, string arr[]) {
 			if (p < 0) p += 12; //changing intervals to positive values
 		}
 		for (int o = 0; o < 7; o++) {
-
+			//storing user's intervals in an array
 		}
 		//cout << arr[i] << endl;
 			cout << p;
-		
+		//checking the user input array with an appropriate array for maj and min
 	}
 }
 
