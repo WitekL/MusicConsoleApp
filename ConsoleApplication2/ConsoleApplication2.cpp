@@ -15,15 +15,25 @@ using namespace std;
 string sounds[15] = { "A", "Bb", "B", "C", "C#", "D", "Eb", "F", "F#", "Gb", "Ab", "Db", "Cb", "G", "E" };
 
 void checkScale(string scale, string root, string arr[]) {
-	string distancesSharp[12] = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" };
+	string distancesSharp[12] = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"};
 	string distancesFlat[12]  = { "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab" };
 	string intervals[12] = { "unison", "minor 2nd", "major 2nd", "minor 3rd", "major 3rd", "perfect 4th", "dim 5th", "perfect 5th", "minor 6th", "major 6th", "minor 7th", "major 7th"};
 	int intVals[12] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
 	
 	for (int i = 0; i <= 6; i++) {
-		int p = distance(find(distancesSharp, distancesSharp + 12, root), find(distancesSharp, distancesSharp + 12, arr[i])); //find the value of answer[i] in distances array. TBI
-		cout << arr[i] << endl;
+		int p;
+		if (root == "F" || root == "Bb" || root == "Eb" || root == "Ab" || root == "Db" || root == "Gb" || root == "Cb") {
+			p = distance(find(distancesFlat, distancesFlat + 12, root), find(distancesFlat, distancesFlat + 12, arr[i])); //find the value of answer[i] in distances array. TBI
+			if (p < 0) p += 12;
+		}
+
+		if (root == "C" || root == "G" || root == "D" || root == "A" || root == "E" || root == "B" || root == "F#" || root == "C#") {
+			p = distance(find(distancesSharp, distancesSharp + 12, root), find(distancesSharp, distancesSharp + 12, arr[i])); //find the value of answer[i] in distances array. TBI
+			if (p < 0) p += 12;
+		}
+
+		//cout << arr[i] << endl;
 			cout << p;
 		
 	}
