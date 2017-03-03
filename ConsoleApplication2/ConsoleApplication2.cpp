@@ -24,15 +24,18 @@ void checkScale(string scale, string root, string arr[]) {
 	for (int i = 0; i <= 6; i++) {
 		int p;
 		if (root == "F" || root == "Bb" || root == "Eb" || root == "Ab" || root == "Db" || root == "Gb" || root == "Cb") {
-			p = distance(find(distancesFlat, distancesFlat + 12, root), find(distancesFlat, distancesFlat + 12, arr[i])); //find the value of answer[i] in distances array. TBI
-			if (p < 0) p += 12;
+			p = distance(find(distancesFlat, distancesFlat + 12, root), find(distancesFlat, distancesFlat + 12, arr[i])); //saves the distance from root to the note given by user
+			if (p < 0) p += 12; //changing intervals to positive values
+
 		}
 
 		if (root == "C" || root == "G" || root == "D" || root == "A" || root == "E" || root == "B" || root == "F#" || root == "C#") {
-			p = distance(find(distancesSharp, distancesSharp + 12, root), find(distancesSharp, distancesSharp + 12, arr[i])); //find the value of answer[i] in distances array. TBI
-			if (p < 0) p += 12;
+			p = distance(find(distancesSharp, distancesSharp + 12, root), find(distancesSharp, distancesSharp + 12, arr[i])); //saves the distance from root to the note given by user
+			if (p < 0) p += 12; //changing intervals to positive values
 		}
+		for (int o = 0; o < 7; o++) {
 
+		}
 		//cout << arr[i] << endl;
 			cout << p;
 		
