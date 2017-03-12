@@ -14,11 +14,13 @@ using namespace std;
 
 string sounds[15] = { "A", "Bb", "B", "C", "C#", "D", "Eb", "F", "F#", "Gb", "Ab", "Db", "Cb", "G", "E" };
 
-void checkScale(string scale, string root, string arr[]) {
+bool checkScale(string scale, string root, string arr[]) {
 	string distancesSharp[12] = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"};
 	string distancesFlat[12]  = { "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab" };
 	string intervals[12] = { "unison", "minor 2nd", "major 2nd", "minor 3rd", "major 3rd", "perfect 4th", "dim 5th", "perfect 5th", "minor 6th", "major 6th", "minor 7th", "major 7th"};
-	int intVals[12] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+	int userInterv[7];
+	int maj[7] = {2, 2, 1, 2, 2, 2, 1};
+	int min[7] = {2, 1, 2, 2, 1, 2, 2};
 
 	
 	for (int i = 0; i <= 6; i++) {
@@ -34,10 +36,19 @@ void checkScale(string scale, string root, string arr[]) {
 			if (p < 0) p += 12; //changing intervals to positive values
 		}
 		for (int o = 0; o < 7; o++) {
-			//storing user's intervals in an array
+			userInterv[o] = p;
+			if (scale == "dur") {
+				if (userInterv[o] != maj[o]) return false;
+				else return true;
+			}
+			else if (scale == "moll") {
+				if(userInterv[o] != min[o]) return false;
+				else return false;
+			}
 		}
-		//cout << arr[i] << endl;
-			cout << p;
+
+
+					cout << p;
 		//checking the user input array with an appropriate array for maj and min
 	}
 }
@@ -50,11 +61,13 @@ void scales() {
 	int j = rand() % 2;
 	string root = sounds[i];
 	string scl = scale[j];
-	cout << sounds[i] << " " << scale[j];
+	cout << sounds[i] << " " << scale[j] << endl;
 	for (int k = 0; k <= 6; k++) {
 		cin >> answer[k];
 	}
-	checkScale(scl, root, answer);
+	bool result = checkScale(scl, root, answer);
+	if (result) cout << "Correct!";
+	else cout << "somting ronk";
 }
 
 
